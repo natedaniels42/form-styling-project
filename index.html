@@ -43,7 +43,7 @@
             <p class="error" id="password2-error">Password must match</p>
             <input type="password" name="password2" id="password2" />
           </div>
-          <button type="submit" class="btn">Sign Up</button>
+          <button type="submit" class="btn" id="button" value="Send Email">Sign Up</button>
           <p class="bottom-text">
             By clicking the Sign Up button, you agree to our
             <a href="#">Terms & Conditions</a> and
@@ -55,5 +55,11 @@
         <p>Already have an account? <a href="#">Login Here</a></p>
       </footer>
     </div>
+    <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('user_xDFGV3ReOqNj4BrmnujfO')
+</script>
   </body>
 </html>

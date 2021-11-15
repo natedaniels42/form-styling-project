@@ -17,6 +17,7 @@ const passwordError = document.getElementById('password-error');
 const password2Error = document.getElementById('password2-error');
 const inputs = document.querySelectorAll('input');
 const emailValidation = new RegExp(/\w+@\w+\.\w+/);
+const button = document.getElementById('button');
 
 for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('input', (event) => {
@@ -24,7 +25,7 @@ for (let i = 0; i < inputs.length; i++) {
     })
 }
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -47,7 +48,19 @@ form.addEventListener('submit', (event) => {
             password2Error.style.display = 'contents';
         }
     } else {
-        console.log('valid');
+        button.value = 'Sending...';
+
+        const serviceID = 'default_service';
+        const templateID = 'template_3efu1di';
+     
+        emailjs.sendForm(serviceID, templateID, this)
+         .then(() => {
+           button.value = 'Send Email';
+           alert('Sent!');
+         }, (err) => {
+           button.value = 'Send Email';
+           alert(JSON.stringify(err));
+         });
     }
 })
 
