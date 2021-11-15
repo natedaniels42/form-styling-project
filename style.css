@@ -118,6 +118,34 @@
     text-align: center;
   }
 
+  #confirmation {
+    display: none;
+  }
+
+  #confirmation p {
+    color: #008000;
+  }
+
+  #confirmation img {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+  }
+
+  #error {
+    display: none;
+  }
+
+  #error p {
+    color: red;
+  }
+
+  #error img {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+  }
+
   footer {
     /* 
     Should be centered

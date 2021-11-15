@@ -18,6 +18,8 @@ const password2Error = document.getElementById('password2-error');
 const inputs = document.querySelectorAll('input');
 const emailValidation = new RegExp(/\w+@\w+\.\w+/);
 const button = document.getElementById('button');
+const confirmation = document.getElementById('confirmation');
+const error = document.getElementById('error');
 
 for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('input', (event) => {
@@ -56,10 +58,14 @@ form.addEventListener('submit', function (event) {
         emailjs.sendForm(serviceID, templateID, this)
          .then(() => {
            button.value = 'Send Email';
-           alert('Sent!');
+           confirmation.style.display = 'flex';
+           for (let i = 0; i < inputs.length; i++) {
+               inputs[i].value = '';
+           }
          }, (err) => {
            button.value = 'Send Email';
-           alert(JSON.stringify(err));
+           console.log(err);
+           error.style.display = 'flex';
          });
     }
 })
@@ -69,6 +75,7 @@ const validatePassword = (password) => {
     return /[a-z]/.test(password) 
     && /[A-Z]/.test(password) 
     && /\d/.test(password) 
+    && /[!@#\$%\^&\*\(\)]/.test(password)
     && password.length >= 8 
     && password.length <= 16
 }
